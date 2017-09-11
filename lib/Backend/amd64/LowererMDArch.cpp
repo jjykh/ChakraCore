@@ -1701,7 +1701,7 @@ LowererMDArch::LowerEntryInstr(IR::EntryInstr * entryInstr)
     firstPrologInstr->InsertBefore(IR::PragmaInstr::New(Js::OpCode::PrologStart, 0, m_func));
     lastPrologInstr->InsertAfter(IR::PragmaInstr::New(Js::OpCode::PrologEnd, 0, m_func));
 
-#ifdef _WIN32 // home registers
+#ifdef ASMJS_PLAT // home registers
     //
     // Now store all the arguments in the register in the stack slots
     //
@@ -2032,6 +2032,7 @@ LowererMDArch::LowerExitInstr(IR::ExitInstr * exitInstr)
     // Insert RET
     IR::IntConstOpnd * intSrc = IR::IntConstOpnd::New(0, TyInt32, this->m_func);
     IR::RegOpnd *retReg = nullptr;
+#ifdef ASMJS_PLAT
     if (m_func->GetJITFunctionBody()->IsAsmJsMode() && !m_func->IsLoopBody())
     {
         switch (m_func->GetJITFunctionBody()->GetAsmJsInfo()->GetRetType())
@@ -2084,6 +2085,7 @@ LowererMDArch::LowerExitInstr(IR::ExitInstr * exitInstr)
         }
     }
     else
+#endif
     {
         retReg = IR::RegOpnd::New(nullptr, this->GetRegReturn(TyMachReg), TyMachReg, this->m_func);
     }

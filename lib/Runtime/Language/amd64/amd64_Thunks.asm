@@ -255,6 +255,7 @@ endif
 ?ProfileModeDeferredDeserializeThunk@ScriptContext@Js@@SAPEAXPEAVRecyclableObject@2@UCallInfo@2@ZZ ENDP
 
 ifdef _ENABLE_DYNAMIC_THUNKS
+ifdef ASMJS_PLAT
 
 ;;============================================================================================================
 ;; Js::AsmJsInterpreterThunk
@@ -550,6 +551,8 @@ endif
 
         rex_jmp_reg rax
 ?WasmDeferredParseInternalThunk@WasmLibrary@Js@@SAPEAXPEAVRecyclableObject@2@UCallInfo@2@ZZ ENDP
+
+endif
 
 ;;============================================================================================================
 

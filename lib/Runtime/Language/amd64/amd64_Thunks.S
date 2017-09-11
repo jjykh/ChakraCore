@@ -175,7 +175,7 @@ NESTED_END _ZN2Js13ScriptContext35ProfileModeDeferredDeserializeThunkEPNS_16Recy
 
 
 #ifdef _ENABLE_DYNAMIC_THUNKS
-
+#ifdef ASMJS_PLAT
 //============================================================================================================
 // Js::AsmJsInterpreterThunk
 //============================================================================================================
@@ -417,4 +417,5 @@ NESTED_ENTRY _ZN2Js11WasmLibrary30WasmDeferredParseInternalThunkEPNS_16Recyclabl
         jmp rax
 NESTED_END _ZN2Js11WasmLibrary30WasmDeferredParseInternalThunkEPNS_16RecyclableObjectENS_8CallInfoEz, _TEXT
 
+#endif
 #endif // _ENABLE_DYNAMIC_THUNKS

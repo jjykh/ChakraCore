@@ -215,6 +215,7 @@ done:
 amd64_CallFunction ENDP
 
 ifdef _ENABLE_DYNAMIC_THUNKS
+ifdef ASMJS_PLAT
 
 extrn ?GetStackSizeForAsmJsUnboxing@Js@@YAHPEAVScriptFunction@1@@Z: PROC
 extrn ?GetArgsSizesArray@Js@@YAPEAIPEAVScriptFunction@1@@Z : PROC
@@ -332,6 +333,7 @@ endif
 
 ??$CallAsmJsFunction@H@JavascriptFunction@Js@@SAHPEAVRecyclableObject@1@P6APEAX0UCallInfo@1@ZZPEAPEAXIPEAE@Z ENDP
 
+endif
 endif ;; _ENABLE_DYNAMIC_THUNKS
 
 extrn ?DeferredParse@JavascriptFunction@Js@@SAP6APEAXPEAVRecyclableObject@2@UCallInfo@2@ZZPEAPEAVScriptFunction@2@@Z : PROC

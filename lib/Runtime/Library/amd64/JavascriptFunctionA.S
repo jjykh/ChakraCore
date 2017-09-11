@@ -109,6 +109,7 @@ NESTED_END amd64_CallFunction, _TEXT
 
 //------------------------------------------------------------------------------
 #ifdef _ENABLE_DYNAMIC_THUNKS
+#ifdef ASMJS_PLAT
 
 //extrn ?GetStackSizeForAsmJsUnboxing@Js@@YAHPEAVScriptFunction@1@@Z: PROC
 //extrn ?GetArgsSizesArray@Js@@YAPEAIPEAVScriptFunction@1@@Z : PROC
@@ -184,6 +185,7 @@ LEAF_ENTRY _ZN2Js18JavascriptFunction17CallAsmJsFunctionIdEET_PNS_16RecyclableOb
     jmp C_FUNC(_ZN2Js18JavascriptFunction17CallAsmJsFunctionIiEET_PNS_16RecyclableObjectEPFPvS4_NS_8CallInfoEzEPS5_jPh)
 LEAF_END _ZN2Js18JavascriptFunction17CallAsmJsFunctionIdEET_PNS_16RecyclableObjectEPFPvS4_NS_8CallInfoEzEPS5_jPh, _TEXT
 
+#endif
 #endif // _ENABLE_DYNAMIC_THUNKS
 //------------------------------------------------------------------------------
 .balign 16

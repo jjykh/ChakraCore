@@ -2259,7 +2259,8 @@ LABEL1:
         bool isAsmJs = AsmJsScriptFunction::Is(func);
         bool isWasmOnly = WasmScriptFunction::Is(func);
         uintptr_t faultingAddr = helper.GetFaultingAddress();
-        if (isAsmJs)
+#ifdef ASMJS_PLAT
+        if (isWAsmJs)
         {
             AsmJsScriptFunction* asmFunc = AsmJsScriptFunction::FromVar(func);
             // some extra checks for asm.js because we have slightly more information that we can validate
@@ -2307,6 +2308,7 @@ LABEL1:
             }
         }
         else
+#endif
         {
             MEMORY_BASIC_INFORMATION info = { 0 };
             size_t size = VirtualQuery((LPCVOID)faultingAddr, &info, sizeof(info));
