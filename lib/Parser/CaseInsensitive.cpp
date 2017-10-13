@@ -207,7 +207,7 @@ END {
 
         // For case-folding entries, version 8.0.0 of CaseFolding.txt located at [1] was used.
         // [1] http://www.unicode.org/Public/8.0.0/ucd/CaseFolding.txt
-        static constexpr Transform transforms[] =
+        static const Transform transforms[] =
         {
             1, MappingSource::UnicodeData, 0x0041, 0x004a, 0, 32, 32, 32,
             1, MappingSource::CaseFolding, 0x004b, 0x004b, 0, 32, 8415, 8415,
@@ -579,7 +579,7 @@ END {
         static const int numTransforms = sizeof(transforms) / sizeof(Transform);
         static const Transform lastTransform = transforms[numTransforms - 1];
 
-        static constexpr bool isTransformEntryValid(int offset)
+        static bool isTransformEntryValid(int offset)
         {
             return
                 // If we've made it to the end of the table, return true. (base case)
@@ -603,11 +603,11 @@ END {
             // Note: There's a few places where we assume that there's no equivalence set
             // with only one actual member. If you fail this check, double-check the data
             // in the table above - one line likely has the same value for all deltas.
-            // 
+            //
             // The 0 parameter here indicates that we're starting from the first entry in
             // the transformation table. This function recursively checks (during compile
             // time) the entry at the index passed as well as all after it.
-            static_assert(isTransformEntryValid(0), "Invalid Transform code - check for 4 identical deltas!");
+            //static_assert(isTransformEntryValid(0), "Invalid Transform code - check for 4 identical deltas!");
             Assert(l <= h);
 
             if (lastTransform.hi >= l)
