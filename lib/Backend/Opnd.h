@@ -1479,7 +1479,7 @@ class ListOpnd : public Opnd
     template<typename... T>
     struct ListOpndInit
     {
-        static constexpr int length = sizeof...(T);
+        static const int length = sizeof...(T);
         ListOpndInit(T...rest)
         {
             insert(0, rest...);
