@@ -1170,7 +1170,7 @@ template<> char16 DumpBlockTypeName<MediumAllocationBlockAttributes>::name[] = _
 template <class TBlockType>
 void PreAggregateBucketStats(TBlockType* list)
 {
-    HeapBlockList::ForEach(list, [](auto heapBlock)
+    HeapBlockList::ForEach(list, [](TBlockType* heapBlock)
     {
         // Process blocks not in allocator in pre-pass. They are not put into buckets yet.
         if (!heapBlock->IsInAllocator())
