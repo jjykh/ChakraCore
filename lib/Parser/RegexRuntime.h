@@ -663,7 +663,7 @@ namespace UnifiedRegex
     template <uint8 n>
     struct SwitchMixin
     {
-        static constexpr uint8 MaxCases = n;
+        static const uint8 MaxCases = n;
 
         uint8 numCases;
         // numCases cases, in increasing character order
